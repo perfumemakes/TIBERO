@@ -1,0 +1,120 @@
+###########################################
+### Database Identification
+###########################################
+DB_NAME=tibero6
+LISTENER_PORT=8629
+
+###########################################
+### File Configuration
+###########################################
+CONTROL_FILES="/tibero/control/control0.ctl","/tibero/control/control1.ctl"
+DB_CREATE_FILE_DEST="/tibero/tbdata"   
+
+###########################################
+### Memory & Session
+###########################################
+TOTAL_SHM_SIZE=3G  
+MEMORY_TARGET=6G  
+LOG_BUFFER=30M
+MAX_SESSION_COUNT=40 
+
+###########################################
+### Undo and Rollback Segments
+###########################################
+UNDO_RETENTION=900
+_USGMT_ONLINE_MIN=20    # Max Session * 0.2 ( TAC * 2 )
+_USGMT_ONLINE_MAX=1000    # Max Session * 1.5 ( least 1000 ,TAC * 2 )
+_USGMT_UNIFORM_EXTSIZE=1024 
+
+##########################################
+## Archive Log Mode
+##########################################
+LOG_ARCHIVE_FORMAT="log-t%t-r%r-s%s.arc"
+LOG_ARCHIVE_DEST="/tibero/tbdata/tbarch" 
+_ARCHIVE_LAG_TARGET=7200
+
+###########################################
+### Log Dest
+###########################################
+#LOG_DEFAULT_DEST="/tibero/tblog/"
+AUDIT_FILE_DEST="/tibero/tblog/audit"
+CALLSTACK_DUMP_DEST="/tibero/tblog/callstack"
+DBMS_LOG_DEST="/tibero/tblog/dlog"
+LSNR_LOG_DEST="/tibero/tblog/lsnr"
+SLOG_DEST="/tibero/tblog/slog" 
+ILOG_DEST="/tibero/tblog/ilog" 
+SQL_TRACE_DEST="/tibero/tblog/sqltrace"
+TRACE_DUMP_DEST="/tibero/tblog/dump/tracedump"
+_ACF_DIAG_TRACE_DEST="/tibero/tblog/dump/diag"
+ACT_LOG_DEST="/tibero/tblog/dump/act"
+MEM_LOG_DEST="/tibero/tblog/dump/memlog"
+
+###########################################
+### Log Size & Log file Size
+###########################################
+AUDIT_LOG_TOTAL_SIZE_LIMIT=1G    
+ILOG_TOTAL_SIZE_LIMIT=1G
+SLOG_TOTAL_SIZE_LIMIT=3G
+LSNR_LOG_TOTAL_SIZE_LIMIT=1G
+DBMS_LOG_TOTAL_SIZE_LIMIT=1G
+SLOG_FILE_SIZE=30M
+ILOG_FILE_SIZE=5M
+DBMS_LOG_FILE_SIZE=30M
+LSNR_LOG_FILE_SIZE=30M
+AUDIT_FILE_SIZE=30M
+
+###########################################
+### TPR Report
+###########################################
+TIBERO_PERFORMANCE_REPOSITORY=Y
+TPR_SNAPSHOT_SAMPLING_INTERVAL=120
+TPR_SNAPSHOT_RETENTION=30
+TPR_SNAPSHOT_TOP_SQL_CNT=20
+#ACTIVE_SESSION_HISTORY=Y ## default N
+
+###########################################
+# Checkpoint
+###########################################
+LOG_CHECKPOINT_TIMEOUT=0
+_CHECKPOINT_LAG_LIMIT=2000
+
+###########################################
+# For Linux 
+###########################################
+_LOG_WRITE_SYSCALL=1 #redo 2member
+#_USE_O_DIRECT=Y   #For Linux TAC Rawdevice
+
+###########################################
+# SQL Plan (Optimizor & Statistics)
+###########################################
+_USE_DYNAMIC_SAMPLING=N
+_OPT_BIND_PEEKING=N
+_ADAPTIVE_CURSOR_SHARING=N
+
+GATHER_SQL_EXEC_TIME=Y
+GATHER_SQL_PLAN_STAT=Y
+#_TPR_GET_SSVR_STAT=Y
+
+###############################################
+## TAC Setting
+###############################################
+#CLUSTER_DATABASE=Y
+#THREAD=0                               # 2 node 1
+#UNDO_TABLESPACE=UNDO1        # 2 node UNDO2
+
+#LOCAL_CLUSTER_ADDR=127.0.0.1
+#LOCAL_CLUSTER_PORT=11019
+#CM_PORT=11039
+
+###########################################
+## Miscellaneous
+###########################################
+USE_RECYCLEBIN=Y
+AUTHENTICATION_TIMEOUT=100
+DBLINK_CONN_TIMEOUT=100
+USE_TS_QUOTA=Y
+_SLOG_DISPLAY_YEAR=Y
+JOB_HISTORY_LOG=Y
+BOOT_WITH_AUTO_DOWN_CLEAN=Y
+
+
